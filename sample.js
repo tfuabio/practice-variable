@@ -4,12 +4,13 @@ const judge = winLose(user_hand,js_hand);
 if (judge == "判定不能") {
   alert('あなたの選んだ手は' + user_hand + 'です。\nこれじゃあ判定不能だよ！');
 } else {
-  alert('あなたの選んだ手は' + user_hand + 'です。\n相手の選んだ手は' + js_hand + 'です。\n結果は' + judge + 'ですね〜');
+  alert('あなたの選んだ手は' + user_hand + 'です。\nJavaScriptの選んだ手は' + js_hand + 'です。\n結果は' + judge + 'ですね〜');
 }
 
 // ランダムで相手の手を取得する関数
 function getJShand() {
   const js_hand_num = Math.floor( Math.random() * 3);
+  let js_hand_name;
   if (js_hand_num == 0) {
     js_hand_name = "グー";
   } else if (js_hand_num == 1) {
