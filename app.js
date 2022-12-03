@@ -1,9 +1,13 @@
-const user_hand = prompt('じゃんけんの手をグー、チョキ、パーから選んでください。');
-const js_hand = getJShand();
-const judge = winLose(user_hand,js_hand);
-if (judge == "判定不能") {
-  alert('あなたの選んだ手は' + user_hand + 'です。\nこれじゃあ判定不能だよ！');
+let user_hand = prompt('じゃんけんの手をグー、チョキ、パーから選んでください。');
+while (!(user_hand == "グー" || user_hand == "チョキ" || user_hand == "パー" || user_hand == null)) {
+  alert('グー・チョキ・パーのいずれかを入力してください');
+  user_hand = prompt('じゃんけんの手をグー、チョキ、パーから選んでください。');
+}
+if (user_hand == null) {
+  alert('またチャレンジしてね');
 } else {
+  const js_hand = getJShand();
+  const judge = winLose(user_hand,js_hand);
   alert('あなたの選んだ手は' + user_hand + 'です。\nJavaScriptの選んだ手は' + js_hand + 'です。\n結果は' + judge + 'ですね〜');
 }
 
@@ -27,23 +31,11 @@ function winLose(user,js) {
   if (user == js) {
     winLoseStr = "あいこ";
   } else if (user == "グー") {
-    if (js == "チョキ") {
-      winLoseStr = "勝ち";
-    } else {
-      winLoseStr = "負け";
-    }
+    winLoseStr = (js == "チョキ") ? "勝ち" : "負け";
   } else if (user == "チョキ") {
-    if (js == "パー") {
-      winLoseStr = "勝ち";
-    } else {
-      winLoseStr = "負け";
-    }
+    winLoseStr = (js == "パー") ? "勝ち" : "負け";
   } else if (user == "パー") {
-    if (js == "グー") {
-      winLoseStr = "勝ち";
-    } else {
-      winLoseStr = "負け";
-    }
+    winLoseStr = (js == "グー") ? "勝ち" : "負け";
   } else {
     winLoseStr = "判定不能";
   }
